@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+
+	"name": "yay-or-nay",
+	"description": "what say you?",
+	"version":"1.0",
+
+	"browser_action":{
+		"default_icon": "toad.png",
+		"default_popup": "popup.html"
+	},
+
+	"permissions": [
+		"tabs",
+		"activeTab"
+	]
+}
