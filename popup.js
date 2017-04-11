@@ -54,21 +54,22 @@ function dothestuff(){
         // document.getElementById('nays').textContent = JSON.stringify(nays);
     });
 
-}
-
-function refreshStatus(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         var tab = tabs[0];
         url = tab.url;
         document.getElementById('theUrl').textContent = url;
-        if(yays.indexOf(url) != -1){
-            lockbutt()
-            document.getElementById('yaybutton').style.backgroundColor = "green";
-        } else if(nays.indexOf(url) != -1){
-            lockbutt()
-            document.getElementById('naybutton').style.backgroundColor = "red";
-        }
     })
+
+}
+
+function refreshStatus(){
+    if(yays.indexOf(url) != -1){
+        lockbutt()
+        document.getElementById('yaybutton').style.backgroundColor = "green";
+    } else if(nays.indexOf(url) != -1){
+        lockbutt()
+        document.getElementById('naybutton').style.backgroundColor = "red";
+    }
 }
 
 function sayYay(){
