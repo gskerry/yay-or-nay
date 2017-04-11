@@ -7,10 +7,18 @@ function seedstuff(){
 
 // seedstuff();
 
+function bytecount(){
+    chrome.storage.local.getBytesInUse(null, function(bytesInUse){
+        document.getElementById('count').textContent = bytesInUse;
+    })
+}
+
 function initstuff(){
+    bytecount();
     chrome.storage.onChanged.addListener(function (changes, areaName){
         document.getElementById('changes').textContent = changes;
         document.getElementById('changes').textContent = areaName;
+        bytecount();
     })
 }
 
