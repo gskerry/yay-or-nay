@@ -1,13 +1,14 @@
 
+var url;
+var yays;
+var nays;
+
 function seedstuff(){
-    chrome.storage.local.get('yays', function(data) {
-        console.log("data: ",data);
-        if(Array.isArray(data) != true){
-            chrome.storage.local.set({'yays': [], 'nays':[]}, function(){
-                message('storage seeded.')
-            })
-        }
-    });
+    chrome.storage.local.set({'yays': [], 'nays':[]}, function(){
+        yays = [];
+        nays = [];
+        refreshStatus();
+    })
 }
 
 function bytecount(){
@@ -38,9 +39,12 @@ function lockbutt(){
     })
 }
 
-var url;
-var yays;
-var nays;
+function clearbutt(){
+    class2array("yaynay").map(function(e){
+        e.removeAttribute("disabled");
+        e.style.backgroundColor = "transparent";
+    })
+}
 
 function runQueries(cb){
 
@@ -69,6 +73,8 @@ function refreshStatus(){
     } else if(nays.indexOf(url) != -1){
         lockbutt()
         document.getElementById('naybutton').style.backgroundColor = "red";
+    } else {
+        clearbutt()
     }
     bytecount();
 }
@@ -91,7 +97,8 @@ function sayNay(){
 
 function clear(){
     chrome.storage.local.clear(function() {
-        alert('local storage WIPED.')
+        // alert('local storage WIPED.')
+        seedstuff();
     });
 }
 
@@ -99,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yaybutton').addEventListener('click', sayYay);
     document.getElementById('naybutton').addEventListener('click', sayNay);
     document.getElementById('clearbutton').addEventListener('click', clear);
-    // seedstuff();
     runQueries(refreshStatus);
 });
 
