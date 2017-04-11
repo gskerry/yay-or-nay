@@ -95,7 +95,7 @@ function sayNay(){
     refreshStatus() // lockbutt();
 }
 
-function clear(){
+function resetStorage(){
     chrome.storage.local.clear(function() {
         // alert('local storage WIPED.')
         seedstuff();
@@ -105,7 +105,7 @@ function clear(){
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yaybutton').addEventListener('click', sayYay);
     document.getElementById('naybutton').addEventListener('click', sayNay);
-    document.getElementById('clearbutton').addEventListener('click', clear);
+    // document.getElementById('resetbutton').addEventListener('click', resetStorage);
     runQueries(refreshStatus);
 });
 
