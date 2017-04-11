@@ -43,12 +43,10 @@ function runQueries(cb){
 
     chrome.storage.local.get('yays', function(data) {
         yays = data.yays;
-        // document.getElementById('yays').textContent = JSON.stringify(yays);
     });
 
     chrome.storage.local.get('nays', function(data) {
         nays = data.nays;
-        // document.getElementById('nays').textContent = JSON.stringify(nays);
     });
 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
@@ -75,22 +73,21 @@ function refreshStatus(){
 function sayYay(){
     yays.push(url);
     chrome.storage.local.set({'yays': yays}, function() {
-        // alert('The Yays Have it. Saved.')
+
     });
-    refreshStatus() // lockbutt();
+    refreshStatus()
 }
 
 function sayNay(){
     nays.push(url);
     chrome.storage.local.set({'nays': nays}, function() {
-        // alert('The Nays Have it. Saved.')
+
     });
-    refreshStatus() // lockbutt();
+    refreshStatus()
 }
 
 function resetStorage(){
     chrome.storage.local.clear(function() {
-        // alert('local storage WIPED.')
         seedstuff();
     });
 }
