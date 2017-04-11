@@ -44,6 +44,7 @@ function clearbutt(){
         e.removeAttribute("disabled");
         e.style.backgroundColor = "transparent";
     })
+    document.getElementById('confirmReset').style.visibility = "hidden";
 }
 
 function runQueries(cb){
@@ -102,10 +103,15 @@ function resetStorage(){
     });
 }
 
+function confirmReset(){
+    document.getElementById('confirmReset').style.visibility = "visible";
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yaybutton').addEventListener('click', sayYay);
     document.getElementById('naybutton').addEventListener('click', sayNay);
-    // document.getElementById('resetbutton').addEventListener('click', resetStorage);
+    document.getElementById('resetbutton').addEventListener('click', confirmReset);
+    document.getElementById('confirmReset').addEventListener('click', resetStorage);
     runQueries(refreshStatus);
 });
 

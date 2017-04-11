@@ -14,3 +14,7 @@
     border: 2px solid #73AD21;
     overflow: hidden;
 }
+
+#resetbutton{
+    background-color: orange;
+}
