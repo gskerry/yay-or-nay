@@ -24,12 +24,16 @@ function initstuff(){
     })
 }
 
-function node2array(tagName){
+function tag2array(tagName){
     return Array.prototype.slice.call(document.getElementsByTagName(tagName))
 }
 
+function class2array(className){
+    return Array.prototype.slice.call(document.getElementsByClassName(className))
+}
+
 function lockbutt(){
-    node2array("button").map(function(e){
+    class2array("yaynay").map(function(e){
         e.setAttribute("disabled", null);
     })
 }
@@ -57,9 +61,11 @@ function dothestuff(){
         if(yays.indexOf(url) != -1){
             document.getElementById('status').textContent = "Yay"
             lockbutt()
+            document.getElementById('yaybutton').style.backgroundColor = "green";
         } else if(nays.indexOf(url) != -1){
             document.getElementById('status').textContent = "Nay"
             lockbutt()
+            document.getElementById('naybutton').style.backgroundColor = "red";
         } else {
             document.getElementById('status').textContent = "What say you?"
         }
