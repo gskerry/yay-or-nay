@@ -53,11 +53,19 @@ function dothestuff(){
     })
 }
 
+function node2array(tagName){
+    return Array.prototype.slice.call(document.getElementsByTagName(tagName))
+}
+
 function sayYay(){
     yays.push(url);
     chrome.storage.local.set({'yays': yays}, function() {
         // alert('The Yays Have it. Saved.')
     });
+    // document.getElementsByTagName("button")[0].setAttribute("disabled", null);
+    node2array("button").map(function(e){
+        e.setAttribute("disabled", null);
+    })
 }
 
 function sayNay(){
