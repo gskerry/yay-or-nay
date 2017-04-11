@@ -1,9 +1,11 @@
 
 function seedstuff(){
-    chrome.storage.sync.set({'yays': [], 'nays':[]}, function(){
+    chrome.storage.local.set({'yays': [], 'nays':[]}, function(){
         message('storage seeded.')
     })
 }
+
+// seedstuff();
 
 function initstuff(){
     chrome.storage.onChanged.addListener(function (changes, areaName){
@@ -20,12 +22,12 @@ var nays;
 
 function dothestuff(){
 
-    chrome.storage.sync.get('yays', function(data) {
+    chrome.storage.local.get('yays', function(data) {
         yays = data.yays;
         document.getElementById('yays').textContent = JSON.stringify(yays);
     });
 
-    chrome.storage.sync.get('nays', function(data) {
+    chrome.storage.local.get('nays', function(data) {
         nays = data.nays;
         document.getElementById('nays').textContent = JSON.stringify(nays);
     });
@@ -47,20 +49,20 @@ function dothestuff(){
 
 function sayYay(){
     yays.push(url);
-    chrome.storage.sync.set({'yays': yays}, function() {
+    chrome.storage.local.set({'yays': yays}, function() {
         // alert('The Yays Have it. Saved.')
     });
 }
 
 function sayNay(){
     nays.push(url);
-    chrome.storage.sync.set({'nays': nays}, function() {
+    chrome.storage.local.set({'nays': nays}, function() {
         // alert('The Nays Have it. Saved.')
     });
 }
 
 function clear(){
-    chrome.storage.sync.clear(function() {
+    chrome.storage.local.clear(function() {
         alert('local storage WIPED.')
         seedstuff();
     });
