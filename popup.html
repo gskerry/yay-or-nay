@@ -5,6 +5,11 @@
         <title>yay-or-nay</title>
         <script src="popup.js"></script>
         <!-- <script src="test.js"></script> -->
+
+        <link rel="stylesheet" href="uikit-300-beta20/css/uikit.min.css" />
+        <script src="uikit-300-beta20/js/jquery.js"></script>
+        <script src="uikit-300-beta20/js/uikit.min.js"></script>
+        <script src="uikit-300-beta20/js/uikit-icons.min.js"></script>
     </head>
     <body>
         <span>url</span><div id="theUrl"></div>
@@ -22,7 +27,8 @@
 
         <button id="clearbutton" type="button">Clear.</button>
 
-        <label>count</label><div id="count"></div> of 5,242,880.
+        <br>bytes: <span id="count" class="uk-badge"></span> of <span class="uk-badge">5,242,880</span>
+        <!-- <label>count</label><div id="count"></div> of 5,242,880. -->
 
     </body>
 </html>
