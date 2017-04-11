@@ -42,7 +42,7 @@ var url;
 var yays;
 var nays;
 
-function dothestuff(){
+function runQueries(cb){
 
     chrome.storage.local.get('yays', function(data) {
         yays = data.yays;
@@ -58,7 +58,10 @@ function dothestuff(){
         var tab = tabs[0];
         url = tab.url;
         document.getElementById('theUrl').textContent = url;
+        cb()
     })
+
+
 
 }
 
@@ -99,8 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('naybutton').addEventListener('click', sayNay);
     document.getElementById('clearbutton').addEventListener('click', clear);
     // seedstuff();
-    dothestuff();
-    refreshStatus()
+    runQueries(refreshStatus);
     bytecount();
 });
 
