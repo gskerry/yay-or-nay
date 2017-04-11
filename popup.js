@@ -17,15 +17,6 @@ function bytecount(){
     })
 }
 
-// function loggingListener(){
-//     chrome.storage.onChanged.addListener(function (changes, areaName){
-//         document.getElementById('changes').textContent = changes;
-//         document.getElementById('changes').textContent = areaName;
-//         bytecount();
-//     })
-// }
-// loggingListener();
-
 function tag2array(tagName){
     return Array.prototype.slice.call(document.getElementsByTagName(tagName))
 }
