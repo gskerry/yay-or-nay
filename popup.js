@@ -38,7 +38,7 @@ function dothestuff(){
 
 }
 
-dothestuff();
+
 
 function sayYay(){
     yays.push(url);
@@ -46,3 +46,9 @@ function sayYay(){
         alert('The Yays Have it. Saved.')
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('yaybutton').addEventListener('click', sayYay);
+    dothestuff();
+});
