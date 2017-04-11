@@ -1,11 +1,14 @@
 
 function seedstuff(){
-    chrome.storage.local.set({'yays': [], 'nays':[]}, function(){
-        message('storage seeded.')
-    })
+    chrome.storage.local.get('yays', function(data) {
+        console.log("data: ",data);
+        if(!Array.isArray(data)){
+            chrome.storage.local.set({'yays': [], 'nays':[]}, function(){
+                message('storage seeded.')
+            })
+        }
+    });
 }
-
-// seedstuff();
 
 function bytecount(){
     chrome.storage.local.getBytesInUse(null, function(bytesInUse){
@@ -22,6 +25,16 @@ function initstuff(){
 }
 
 initstuff();
+
+function node2array(tagName){
+    return Array.prototype.slice.call(document.getElementsByTagName(tagName))
+}
+
+function lockbutt(){
+    node2array("button").map(function(e){
+        e.setAttribute("disabled", null);
+    })
+}
 
 var url;
 var yays;
@@ -45,16 +58,14 @@ function dothestuff(){
         document.getElementById('theUrl').textContent = url;
         if(yays.indexOf(url) != -1){
             document.getElementById('status').textContent = "Yay"
+            lockbutt()
         } else if(nays.indexOf(url) != -1){
             document.getElementById('status').textContent = "Nay"
+            lockbutt()
         } else {
             document.getElementById('status').textContent = "What say you?"
         }
     })
-}
-
-function node2array(tagName){
-    return Array.prototype.slice.call(document.getElementsByTagName(tagName))
 }
 
 function sayYay(){
@@ -62,10 +73,7 @@ function sayYay(){
     chrome.storage.local.set({'yays': yays}, function() {
         // alert('The Yays Have it. Saved.')
     });
-    // document.getElementsByTagName("button")[0].setAttribute("disabled", null);
-    node2array("button").map(function(e){
-        e.setAttribute("disabled", null);
-    })
+    lockbutt();
 }
 
 function sayNay(){
@@ -73,12 +81,12 @@ function sayNay(){
     chrome.storage.local.set({'nays': nays}, function() {
         // alert('The Nays Have it. Saved.')
     });
+    lockbutt();
 }
 
 function clear(){
     chrome.storage.local.clear(function() {
         alert('local storage WIPED.')
-        seedstuff();
     });
 }
 
@@ -86,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yaybutton').addEventListener('click', sayYay);
     document.getElementById('naybutton').addEventListener('click', sayNay);
     document.getElementById('clearbutton').addEventListener('click', clear);
+    seedstuff();
     dothestuff();
     bytecount();
 });
