@@ -2,7 +2,7 @@
 function seedstuff(){
     chrome.storage.local.get('yays', function(data) {
         console.log("data: ",data);
-        if(!Array.isArray(data)){
+        if(Array.isArray(data) != true){
             chrome.storage.local.set({'yays': [], 'nays':[]}, function(){
                 message('storage seeded.')
             })
@@ -23,8 +23,6 @@ function initstuff(){
         bytecount();
     })
 }
-
-initstuff();
 
 function node2array(tagName){
     return Array.prototype.slice.call(document.getElementsByTagName(tagName))
@@ -94,7 +92,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yaybutton').addEventListener('click', sayYay);
     document.getElementById('naybutton').addEventListener('click', sayNay);
     document.getElementById('clearbutton').addEventListener('click', clear);
-    seedstuff();
+    // seedstuff();
     dothestuff();
     bytecount();
 });
+
+initstuff();

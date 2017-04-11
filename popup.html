@@ -10,25 +10,45 @@
         <script src="uikit-300-beta20/js/jquery.js"></script>
         <script src="uikit-300-beta20/js/uikit.min.js"></script>
         <script src="uikit-300-beta20/js/uikit-icons.min.js"></script>
+        <style media="screen">
+            #container{
+                width: 500px;
+            }
+        </style>
     </head>
     <body>
-        <span>url</span><div id="theUrl"></div>
-        <label>status</label><div id="status"></div>
-        <label>yays</label><div id="yays"></div>
-        <label>nays</label><div id="nays"></div>
-        <button id="yaybutton" type="button">Yay.</button>
-        <button id="naybutton" type="button">Nay.</button>
+        <div id="container" class="uk-margin-small uk-card uk-card-default uk-card-body">
 
-        <label>log...</label>
-        <div id="log">
-            changes: <p id="changes"></p>
-            areaName: <p id="areaName"></p>
+            <ul class="uk-subnav uk-subnav-pill" uk-margin>
+                <li class="uk-active"><a href="#">url</a></li>
+                <li><a id="theUrl" href="#">url</a></li>
+            </ul>
+
+            <ul class="uk-subnav uk-subnav-divider" uk-margin>
+                <li class="uk-active"><a href="#">status</a></li>
+                <li><a id="status" href="#"></a></li>
+                <li><a href="#"><button id="yaybutton" type="button" class="uk-button-default uk-button-large">Yay.</button>  <button id="naybutton" type="button" class="uk-button-default uk-button-large">Nay.</button></a></li>
+                <!-- <li><a href="#"></a></li> -->
+            </ul>
+
+            <!-- <label>status</label><div id="status"></div>
+            <button id="yaybutton" type="button" class="uk-button-default">Yay.</button>
+            <button id="naybutton" type="button" class="uk-button-default">Nay.</button> -->
+
+            <!-- <br>
+            <label>yays</label><div id="yays"></div>
+            <label>nays</label><div id="nays"></div>
+
+            <br> -->
+            <!-- <br><label>log...</label>
+            <div id="log">
+                changes: <p id="changes"></p>
+                areaName: <p id="areaName"></p>
+            </div> -->
+
+            bytes: <span id="count" class="uk-badge"></span> of <span class="uk-badge">5,242,880</span>
+            <button id="clearbutton" type="button" class="uk-button-danger">Clear.</button>
         </div>
-
-        <button id="clearbutton" type="button">Clear.</button>
-
-        <br>bytes: <span id="count" class="uk-badge"></span> of <span class="uk-badge">5,242,880</span>
-        <!-- <label>count</label><div id="count"></div> of 5,242,880. -->
 
     </body>
 </html>
