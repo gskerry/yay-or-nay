@@ -46,12 +46,12 @@ function dothestuff(){
 
     chrome.storage.local.get('yays', function(data) {
         yays = data.yays;
-        document.getElementById('yays').textContent = JSON.stringify(yays);
+        // document.getElementById('yays').textContent = JSON.stringify(yays);
     });
 
     chrome.storage.local.get('nays', function(data) {
         nays = data.nays;
-        document.getElementById('nays').textContent = JSON.stringify(nays);
+        // document.getElementById('nays').textContent = JSON.stringify(nays);
     });
 
 }
