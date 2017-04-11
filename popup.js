@@ -14,7 +14,6 @@ function bytecount(){
 }
 
 function initstuff(){
-    bytecount();
     chrome.storage.onChanged.addListener(function (changes, areaName){
         document.getElementById('changes').textContent = changes;
         document.getElementById('changes').textContent = areaName;
@@ -52,7 +51,6 @@ function dothestuff(){
             document.getElementById('status').textContent = "What say you?"
         }
     })
-
 }
 
 function sayYay(){
@@ -81,4 +79,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('naybutton').addEventListener('click', sayNay);
     document.getElementById('clearbutton').addEventListener('click', clear);
     dothestuff();
+    bytecount();
 });
