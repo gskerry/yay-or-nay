@@ -7,11 +7,11 @@
 //
 // initstuff();
 
-function dothestuff(){
+var url;
+var yays;
+var nays;
 
-    var url;
-    var yays;
-    var nays;
+function dothestuff(){
 
     chrome.storage.sync.get('yays', function(data) {
         yays = data.yays;
@@ -39,3 +39,10 @@ function dothestuff(){
 }
 
 dothestuff();
+
+function sayYay(){
+    yays.push(url);
+    chrome.storage.sync.set({'yays': yays}, function() {
+        alert('The Yays Have it. Saved.')
+    });
+}
