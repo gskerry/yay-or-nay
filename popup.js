@@ -60,9 +60,6 @@ function runQueries(cb){
         document.getElementById('theUrl').textContent = url;
         cb()
     })
-
-
-
 }
 
 function refreshStatus(){
@@ -80,7 +77,7 @@ function sayYay(){
     chrome.storage.local.set({'yays': yays}, function() {
         // alert('The Yays Have it. Saved.')
     });
-    lockbutt();
+    refreshStatus() // lockbutt();
 }
 
 function sayNay(){
@@ -88,7 +85,7 @@ function sayNay(){
     chrome.storage.local.set({'nays': nays}, function() {
         // alert('The Nays Have it. Saved.')
     });
-    lockbutt();
+    refreshStatus() // lockbutt();
 }
 
 function clear(){
