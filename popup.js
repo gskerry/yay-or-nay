@@ -54,20 +54,19 @@ function dothestuff(){
         document.getElementById('nays').textContent = JSON.stringify(nays);
     });
 
+}
+
+function refreshStatus(){
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         var tab = tabs[0];
         url = tab.url;
         document.getElementById('theUrl').textContent = url;
         if(yays.indexOf(url) != -1){
-            document.getElementById('status').textContent = "Yay"
             lockbutt()
             document.getElementById('yaybutton').style.backgroundColor = "green";
         } else if(nays.indexOf(url) != -1){
-            document.getElementById('status').textContent = "Nay"
             lockbutt()
             document.getElementById('naybutton').style.backgroundColor = "red";
-        } else {
-            document.getElementById('status').textContent = "What say you?"
         }
     })
 }
@@ -100,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('clearbutton').addEventListener('click', clear);
     // seedstuff();
     dothestuff();
+    refreshStatus()
     bytecount();
 });
 
