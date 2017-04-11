@@ -17,13 +17,14 @@ function bytecount(){
     })
 }
 
-function initstuff(){
-    chrome.storage.onChanged.addListener(function (changes, areaName){
-        document.getElementById('changes').textContent = changes;
-        document.getElementById('changes').textContent = areaName;
-        bytecount();
-    })
-}
+// function loggingListener(){
+//     chrome.storage.onChanged.addListener(function (changes, areaName){
+//         document.getElementById('changes').textContent = changes;
+//         document.getElementById('changes').textContent = areaName;
+//         bytecount();
+//     })
+// }
+// loggingListener();
 
 function tag2array(tagName){
     return Array.prototype.slice.call(document.getElementsByTagName(tagName))
@@ -114,5 +115,3 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('confirmReset').addEventListener('click', resetStorage);
     runQueries(refreshStatus);
 });
-
-initstuff();
