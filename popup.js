@@ -70,6 +70,7 @@ function refreshStatus(){
         lockbutt()
         document.getElementById('naybutton').style.backgroundColor = "red";
     }
+    bytecount();
 }
 
 function sayYay(){
@@ -100,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('clearbutton').addEventListener('click', clear);
     // seedstuff();
     runQueries(refreshStatus);
-    bytecount();
 });
 
 initstuff();
