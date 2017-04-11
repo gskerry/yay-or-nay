@@ -38,8 +38,6 @@ function dothestuff(){
 
 }
 
-
-
 function sayYay(){
     yays.push(url);
     chrome.storage.sync.set({'yays': yays}, function() {
@@ -47,8 +45,15 @@ function sayYay(){
     });
 }
 
+function sayNay(){
+    nays.push(url);
+    chrome.storage.sync.set({'nays': nays}, function() {
+        alert('The Nays Have it. Saved.')
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yaybutton').addEventListener('click', sayYay);
+    document.getElementById('naybutton').addEventListener('click', sayNay);
     dothestuff();
 });
