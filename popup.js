@@ -1,11 +1,9 @@
 
-// function seedstuff(){
-//     chrome.storage.sync.set({'yays': [], 'nays':[]}, function(){
-//         message('storage seeded.')
-//     })
-// }
-//
-// seedstuff();
+function seedstuff(){
+    chrome.storage.sync.set({'yays': [], 'nays':[]}, function(){
+        message('storage seeded.')
+    })
+}
 
 function initstuff(){
     chrome.storage.onChanged.addListener(function (changes, areaName){
@@ -61,8 +59,16 @@ function sayNay(){
     });
 }
 
+function clear(){
+    chrome.storage.sync.clear(function() {
+        alert('local storage WIPED.')
+        seedstuff();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('yaybutton').addEventListener('click', sayYay);
     document.getElementById('naybutton').addEventListener('click', sayNay);
+    document.getElementById('clearbutton').addEventListener('click', clear);
     dothestuff();
 });
