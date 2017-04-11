@@ -1,11 +1,20 @@
 
-// function initstuff(){
+// function seedstuff(){
 //     chrome.storage.sync.set({'yays': [], 'nays':[]}, function(){
-//         message('storage init.')
+//         message('storage seeded.')
 //     })
 // }
 //
-// initstuff();
+// seedstuff();
+
+function initstuff(){
+    chrome.storage.onChanged.addListener(function (changes, areaName){
+        document.getElementById('changes').textContent = changes;
+        document.getElementById('changes').textContent = areaName;
+    })
+}
+
+initstuff();
 
 var url;
 var yays;
@@ -41,14 +50,14 @@ function dothestuff(){
 function sayYay(){
     yays.push(url);
     chrome.storage.sync.set({'yays': yays}, function() {
-        alert('The Yays Have it. Saved.')
+        // alert('The Yays Have it. Saved.')
     });
 }
 
 function sayNay(){
     nays.push(url);
     chrome.storage.sync.set({'nays': nays}, function() {
-        alert('The Nays Have it. Saved.')
+        // alert('The Nays Have it. Saved.')
     });
 }
 
